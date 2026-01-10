@@ -1,2 +1,2 @@
 # cove-backend
-The right note, at the right moment.
+Backend Server for Cove
