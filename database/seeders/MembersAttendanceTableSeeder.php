@@ -13,8 +13,9 @@ class MembersAttendanceTableSeeder extends Seeder
 
         DB::table('members_attendance')->insert([
             [
-                'members_id' => 1,
-                'time_in' => date('H:i:s', $now),
+                'members_attendance_id' => '304350-sfdfkl4323',
+                'members_id' => 'mem_20241230_fg3042',
+                'time_in' => $now,
                 'time_out' => null,
                 'created_at' => $now,
                 'updated_at' => $now,
