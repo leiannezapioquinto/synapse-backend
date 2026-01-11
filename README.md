@@ -1,2 +1,2 @@
 # cove-backend
-Backend Server for Cove
+Backend Server for Synapse
