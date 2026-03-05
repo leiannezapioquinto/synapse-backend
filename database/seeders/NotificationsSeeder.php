@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Constants\IDPrefixes;
+use App\Utils\IDGenerator;
+use Illuminate\Support\Str;
 
 class NotificationsSeeder extends Seeder
 {
@@ -13,33 +16,69 @@ class NotificationsSeeder extends Seeder
     public function run(): void
     {
         $notifications = [
-            [
-                'notifications_id' => 1,
-                'notifications_name' => 'Welcome Message',
-                'notifications_type' => 'info',
-                'notifications_desc' => 'Sent to new members upon registration.',
+       [
+                'notifications_id' => IdGenerator::generate(IDPrefixes::NOTIFICATION_PREFIX, 10),
+                'notifications_name' => 'New Member Registration',
+                'notifications_type' => 'member',
+                'notifications_desc' => 'A new gym member has successfully registered.',
                 'notifications_status' => 'active',
-                'created_at' => time(),
-                'updated_at' => time(),
+                'created_at' => now()->timestamp,
+                'updated_at' => now()->timestamp,
             ],
             [
-                'notifications_id' => 2,
-                'notifications_name' => 'Payment Reminder',
-                'notifications_type' => 'alert',
-                'notifications_desc' => 'Reminds members to renew their plan.',
+                'notifications_id' => IdGenerator::generate(IDPrefixes::NOTIFICATION_PREFIX, 10),
+                'notifications_name' => 'Membership Expiring Soon',
+                'notifications_type' => 'membership',
+                'notifications_desc' => 'A member\'s gym membership will expire soon.',
                 'notifications_status' => 'active',
-                'created_at' => time(),
-                'updated_at' => time(),
+                'created_at' => now()->timestamp,
+                'updated_at' => now()->timestamp,
             ],
             [
-                'notifications_id' => 3,
-                'notifications_name' => 'Plan Expiry',
-                'notifications_type' => 'warning',
-                'notifications_desc' => 'Notifies members that their plan is expiring soon.',
-                'notifications_status' => 'inactive',
-                'created_at' => time(),
-                'updated_at' => time(),
+                'notifications_id' => IdGenerator::generate(IDPrefixes::NOTIFICATION_PREFIX, 10),
+                'notifications_name' => 'Membership Expired',
+                'notifications_type' => 'membership',
+                'notifications_desc' => 'A member\'s gym membership has expired.',
+                'notifications_status' => 'active',
+                'created_at' => now()->timestamp,
+                'updated_at' => now()->timestamp,
             ],
+            [
+                'notifications_id' => IdGenerator::generate(IDPrefixes::NOTIFICATION_PREFIX, 10),
+                'notifications_name' => 'Trainer Assigned',
+                'notifications_type' => 'trainer',
+                'notifications_desc' => 'A trainer has been assigned to a member.',
+                'notifications_status' => 'active',
+                'created_at' => now()->timestamp,
+                'updated_at' => now()->timestamp,
+            ],
+            [
+                'notifications_id' => IdGenerator::generate(IDPrefixes::NOTIFICATION_PREFIX, 10),
+                'notifications_name' => 'New Employee Added',
+                'notifications_type' => 'employee',
+                'notifications_desc' => 'A new employee has been added to the gym system.',
+                'notifications_status' => 'active',
+                'created_at' => now()->timestamp,
+                'updated_at' => now()->timestamp,
+            ],
+            [
+                'notifications_id' => IdGenerator::generate(IDPrefixes::NOTIFICATION_PREFIX, 10),
+                'notifications_name' => 'Payment Received',
+                'notifications_type' => 'payment',
+                'notifications_desc' => 'A member payment has been successfully recorded.',
+                'notifications_status' => 'active',
+                'created_at' => now()->timestamp,
+                'updated_at' => now()->timestamp,
+            ],
+            [
+                'notifications_id' => IdGenerator::generate(IDPrefixes::NOTIFICATION_PREFIX, 10),
+                'notifications_name' => 'Membership Expiring Soon',
+                'notifications_type' => 'membership',
+                'notifications_desc' => "A member's gym membership will expire soon.",
+                'notifications_status' => 'active',
+                'created_at' => now()->timestamp,
+                'updated_at' => now()->timestamp,
+            ]
         ];
 
         DB::table('notifications')->insert($notifications);

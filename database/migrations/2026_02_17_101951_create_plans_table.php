@@ -10,7 +10,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('plans', function (Blueprint $table) {
-            $table->id('plans_id'); // PK
+            $table->string('plans_id')->primary();
             $table->string('plans_name');
             $table->text('plans_description')->nullable();
             $table->decimal('plans_price_monthly', 10, 2)->default(0);

@@ -10,7 +10,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->unsignedBigInteger('members_id')->primary();
+            $table->string('members_id')->primary();
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
@@ -25,11 +25,6 @@ return new class extends Migration
             $table->string('plan_status')->default('active');
             $table->bigInteger('created_at')->nullable();
             $table->bigInteger('updated_at')->nullable();
-
-            $table->foreign('members_id')
-                  ->references('members_id')
-                  ->on('accounts')
-                  ->onDelete('cascade');
         });
     }
 

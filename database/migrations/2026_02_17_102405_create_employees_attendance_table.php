@@ -10,17 +10,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees_attendance', function (Blueprint $table) {
+            $table->string('employees_attendance_id')->primary();
             $table->unsignedBigInteger('employees_id');
             $table->unsignedBigInteger('time_in');
             $table->unsignedBigInteger('time_out')->nullable();
             $table->bigInteger('created_at')->nullable();
             $table->bigInteger('updated_at')->nullable();
-
-            // Foreign key
-            $table->foreign('employees_id')
-                  ->references('employees_id')
-                  ->on('employees')
-                  ->onDelete('cascade');
         });
     }
 
