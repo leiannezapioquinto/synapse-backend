@@ -113,6 +113,17 @@ return [
             // 'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', 'false'),
         ],
 
+        'documentdb' => [
+            'driver' => 'mongodb',
+            'host' => env('DOCUMENTDB_HOST', 'localhost'),
+            'port' => env('DOCUMENTDB_PORT', 27017),
+            'database' => env('DOCUMENTDB_DATABASE'),
+
+            'options' => [
+                'retryWrites' => env('DOCUMENTDB_RETRY_WRITES', false),
+            ],
+        ],
+
     ],
 
     /*
