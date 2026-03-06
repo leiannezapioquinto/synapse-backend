@@ -4,7 +4,7 @@ namespace App\Models;
 
 use MongoDB\Laravel\Eloquent\Model;
 
-class TrainingAssignmentHistory extends DocumentDBBaseRepository
+class TrainingAssignmentHistory extends Model
 {
     protected $collection = 'training_assignment_histories';
 

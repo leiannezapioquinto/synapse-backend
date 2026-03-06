@@ -4,7 +4,7 @@ namespace App\Models;
 
 use MongoDB\Laravel\Eloquent\Model;
 
-class Payment extends DocumentDBBaseRepository
+class Payment extends Model
 {
     protected $collection = 'payments';
 
