@@ -33,4 +33,6 @@ class Resource
     public const PLAN_FREE = 'free';
     public const PLAN_PAID = 'paid';
 
+    public const TOKEN_EXPIRY_SHORT = 1;
+
 }
