@@ -8,6 +8,8 @@ class Members extends Model
 {
     protected $collection = 'members';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'members_id',
         'first_name',
@@ -22,5 +24,7 @@ class Members extends Model
         'gender',
         'weight',
         'plan_status',
+        'created_at',
+        'updated_at'
     ];
 }

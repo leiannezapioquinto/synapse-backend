@@ -12,8 +12,11 @@ class Plans extends Model
         'plans_id',
         'plans_name',
         'plans_description',
+        'plans_price_unit',
         'plans_price_monthly',
         'plans_price_annual',
-        'plans_price_per_unit',
+        'plans_status',
+        'created_at',
+        'updated_at'
     ];
 }
