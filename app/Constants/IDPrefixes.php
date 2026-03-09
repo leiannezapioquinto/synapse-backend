@@ -9,6 +9,7 @@ class IDPrefixes
     public const EMPLOYEE = 'EMP';
     public const PAYMENT = 'PMT';
     public const MEMBERSHIP = 'MEM';
+    public const PLANS_PREFIX = 'PL';
     public const NOTIFICATION_PREFIX = 'NOTIF';
     public const USER_NOTIFICATION_PREFIX = 'UNOTIF';
 }
