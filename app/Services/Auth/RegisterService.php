@@ -100,12 +100,6 @@ class RegisterService
             'first_name' => $data['first_name'],
             'middle_name' => null,
             'last_name' => $data['last_name'],
-            'contact_number' => $data['contact_number'],
-            'province' => $data['province'],
-            'city' => $data['city'],
-            'barangay' => $data['barangay'],
-            'zip_code' => $data['zip_code'],
-            'gender' => $data['gender'],
             'created_at' => $now,
             'updated_at' => $now,
         ];
@@ -114,6 +108,12 @@ class RegisterService
 
         if (($data['account_type'] ?? '') === 'member') {
             $data['members_id'] = $memberId;
+            $data['contact_number'] = $data['contact_number'];
+            $data['province'] = $data['province'];
+            $data['city'] = $data['city'];
+            $data['barangay'] = $data['barangay'];
+            $data['zip_code'] = $data['zip_code'];
+            $data['gender'] = $data['gender'];
             $data['plan_id'] = $defaultFreePlanId->plans_id;
             $data['weight'] = null;
             $data['plan_status'] = Resource::STATUS_ACTIVE;

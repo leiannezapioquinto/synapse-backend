@@ -2,51 +2,46 @@
 
 namespace App\Repositories;
 
-use Illuminate\Support\Facades\DB;
-
-class MemberRepository
+class MemberRepository extends BaseRepository
 {
     protected $table = 'members';
+    protected $primaryKey = 'members_id';
 
     public function create(array $data)
     {
-        DB::insert("
-            INSERT INTO {$this->table}
-            (members_id, first_name, last_name, email, password, contact_number, province, city, barangay, zip_code, created_at, updated_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ", [
-            $data['members_id'],
-            $data['first_name'],
-            $data['last_name'],
-            $data['email'],
-            $data['password'],
-            $data['contact_number'] ?? null,
-            $data['province'] ?? null,
-            $data['city'] ?? null,
-            $data['barangay'] ?? null,
-            $data['zip_code'] ?? null,
-            now(),
-            now(),
-        ]);
+        $data = [
+            'members_id' => $data['members_id'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'contact_number' => $data['contact_number'] ?? null,
+            'province' => $data['province'] ?? null,
+            'city' => $data['city'] ?? null,
+            'barangay' => $data['barangay'] ?? null,
+            'zip_code' => $data['zip_code'] ?? null,
+            'plan_id' => $data['plan_id'] ?? null,
+            'gender' => $data['gender'] ?? null,
+            'weight' => $data['weight'] ?? null,
+            'plan_status' => $data['plan_status'] ?? null,
+            'created_at' => now()->timestamp,
+            'updated_at' => now()->timestamp,
+        ];
 
-        return $this->findByEmail($data['email']);
+        $this->insert($data);
+
+        return $this->findWhere([
+            'members_id' => $data['members_id']
+        ]);
     }
 
-    public function findByEmail(string $email)
+    public function findByEmail($email)
     {
-        $result = DB::select("
-            SELECT * FROM {$this->table} WHERE email = ? LIMIT 1
-        ", [$email]);
-
-        return $result[0] ?? null;
+        return $this->findWhere([
+            'email' => $email
+        ]);
     }
 
     public function findById($id)
     {
-        $result = DB::select("
-            SELECT * FROM {$this->table} WHERE members_id = ? LIMIT 1
-        ", [$id]);
-
-        return $result[0] ?? null;
+        return $this->find($id);
     }
 }
