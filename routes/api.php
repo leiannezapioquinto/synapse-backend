@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => '/v1', 'as' => 'v1.'], function () {
-    include(__DIR__ . '/auth.php');
-    include(__DIR__ . '/frontend.php');
-    include(__DIR__ . '/public.php');
+Route::prefix('v1')->name('v1.')->group(function () {
+    require __DIR__.'/auth.php';
+    Route::middleware(['web', 'auth:sanctum'])->group(function () {
+        require __DIR__.'/frontend.php';
+    });
+    require __DIR__.'/public.php';
 });
