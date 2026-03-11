@@ -13,9 +13,11 @@ return new class extends Migration
             $table->string('plans_id')->primary();
             $table->string('plans_name');
             $table->text('plans_description')->nullable();
+            $table->decimal('plans_price_unit', 10, 2)->default(0);
             $table->decimal('plans_price_monthly', 10, 2)->default(0);
             $table->decimal('plans_price_annual', 10, 2)->default(0);
-            $table->string('plans_status')->default('active');
+            $table->string('plans_status');
+            $table->string('plans_type');
             $table->bigInteger('created_at')->nullable();
             $table->bigInteger('updated_at')->nullable();
         });

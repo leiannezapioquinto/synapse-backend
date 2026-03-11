@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('barangay');
             $table->string('zip_code');
-            $table->unsignedBigInteger('plan_id');
+            $table->string('plan_id');
             $table->string('gender');
             $table->float('weight')->nullable();
             $table->string('plan_status')->default('active');
